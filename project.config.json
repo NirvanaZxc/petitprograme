@@ -9,7 +9,7 @@
 		"coverView": true,
 		"autoAudits": false,
 		"checkInvalidKey": true,
-		"checkSiteMap": true,
+		"checkSiteMap": false,
 		"uploadWithSourceMap": true,
 		"babelSetting": {
 			"ignore": [],
@@ -19,8 +19,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.6.4",
-	"appid": "wx707889a6d9d06f6f",
-	"projectname": "Locally",
+	"appid": "wxcf02b007a85c7e86",
+	"projectname": "petitprograme",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"condition": {
