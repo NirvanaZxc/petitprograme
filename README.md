@@ -23,19 +23,3 @@
 6. Submit a **Pull Request** so that we can review your changes.
 
 > **NOTE**: Be sure to merge the latest from "upstream" before making a pull request!
-
-## License
-
-
-
-<!--
-other config backup
-
-,
-      {
-        "pagePath": "pages/contact/contact",
-        "text": "联系我们",
-        "iconPath": "assets/contact.png",
-        "selectedIconPath": "assets/contact-active.png"
-      }
- -->
