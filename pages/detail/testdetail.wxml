@@ -1,0 +1,21 @@
+
+<view class="heading" wx:if="{{shop.title[0].value}}">
+  <text class="name">{{shop.title[0].value}}</text>
+  <text class="phone">电话：{{shop.title[0].value || 'none'}}</text>
+  <text class="address">地址：{{shop.title[0].value}}</text>
+  <text class="hours">营业时间：{{shop.title[0].value}}</text>
+  <view class="score" wx:if="{{shop.title[0].value}}">{{shop.title[0].value}}</view>
+</view>
+
+<view class="introduction" wx:if="{{shop.title[0].value}}">
+  <text>{{shop.title[0].value}}</text>
+</view>
+
+
+<wxs module="utils">
+  module.exports = {
+    size: function (input) {
+      return input.replace('w.h', '100.100')
+    }
+  }
+</wxs>

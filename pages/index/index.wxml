@@ -15,7 +15,7 @@
 </view>
 
 <view class="links">
-  <navigator url="/pages/list/list?type=recommend">
+  <navigator url="/pages/detail/testdetail?item=1">
     <image src="/assets/link-01.png"/>
   </navigator>
   <navigator url="/pages/forum/forum">

@@ -5,7 +5,8 @@
     "pages/detail/detail",
     "pages/messages/messages",
     "pages/profile/profile",
-    "pages/settings/settings"
+    "pages/settings/settings",
+    "pages/detail/testdetail"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",
