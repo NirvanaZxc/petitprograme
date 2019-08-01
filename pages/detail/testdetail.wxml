@@ -1,14 +1,22 @@
+<wxs module="filter" src="../../utils/deletehtml.wxs"></wxs>
+
+<swiper class="slides" indicator-dots="{{shop.slide.length > 1}}" indicator-color="#bcc0c9" indicator-active-color="#3a4861">
+  <swiper-item wx:for="{{shop.slide}}" wx:key="id">
+    <image src="{{item.url}}" mode="aspectFill" bindtap="previewHandle" data-src="{{item.url}}"/>
+  </swiper-item>
+</swiper>
 
 <view class="heading" wx:if="{{shop.title[0].value}}">
   <text class="name">{{shop.title[0].value}}</text>
-  <text class="phone">电话：{{shop.title[0].value || 'none'}}</text>
-  <text class="address">地址：{{shop.title[0].value}}</text>
-  <text class="hours">营业时间：{{shop.title[0].value}}</text>
-  <view class="score" wx:if="{{shop.title[0].value}}">{{shop.title[0].value}}</view>
+  <text class="phone">电话：{{shop.phone[0].value  || 'none'}}</text>
+  <text class="address">地址：{{shop.address[0].value  || 'none'}}</text>
+  <text class="hours">营业时间：{{shop.horaire[0].value || 'none'}}</text>
+  <text class="price">平价消费价格：{{shop.price[0].value  || 'none'}}</text>
+  <text class="transport">交通：{{shop.transport[0].value  || 'none'}}</text>
 </view>
 
-<view class="introduction" wx:if="{{shop.title[0].value}}">
-  <text>{{shop.title[0].value}}</text>
+<view class="introduction" wx:if="{{shop.description[0].value}}">
+  <text>{{filter.deleteHtmlTags(shop.description[0].value)}}</text>
 </view>
 
 

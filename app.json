@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/list/list",
+    "pages/list/testlist",
     "pages/detail/detail",
     "pages/messages/messages",
     "pages/profile/profile",

@@ -14,9 +14,16 @@ Page({
   onLoad(options) {
     fetch(`/node/${options.item}`)
       .then(res => {
-        console.log(res.data.title[0].value);
         this.setData({ shop: res.data })
+        wx.setNavigationBarTitle({ title: res.data.title[0].value})
       })
   },
+
+  previewHandle(e) {
+    wx.previewImage({
+      current: e.target.dataset.src,
+      urls: this.data.shop.slide
+    })
+  }
 
 })
