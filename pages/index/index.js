@@ -29,15 +29,15 @@ Page({
      ]
 
      const categories = [
-       { icon: '/assets/icons/grid-01.png', name: '美食', id: 1 },
-       { icon: '/assets/icons/grid-02.png', name: '洗浴足疗', id: 2 },
-       { icon: '/assets/icons/grid-03.png', name: '结婚啦', id: 3 },
-       { icon: '/assets/icons/grid-04.png', name: '卡拉OK', id: 4 },
-       { icon: '/assets/icons/grid-05.png', name: '找工作', id: 5 },
-       { icon: '/assets/icons/grid-06.png', name: '辅导班', id: 6 },
-       { icon: '/assets/icons/grid-07.png', name: '汽车保养', id: 7 },
-       { icon: '/assets/icons/grid-08.png', name: '租房', id: 8 },
-       { icon: '/assets/icons/grid-09.png', name: '装修', id: 9 }
+       { icon: 'http://ww1.sinaimg.cn/large/006ThXL5ly1fj8w5i2onyj302u02umwz.jpg', name: '美食', id: 1 },
+       { icon: 'http://ww1.sinaimg.cn/large/006ThXL5ly1fj8w5i2j4dj302u02umwy.jpg', name: '洗浴足疗', id: 2 },
+       { icon: 'http://ww1.sinaimg.cn/large/006ThXL5ly1fj8w5i56i0j302u02u744.jpg', name: '结婚啦', id: 3 },
+       { icon: 'http://ww1.sinaimg.cn/large/006ThXL5ly1fj8w5i2uzvj302u02udfo.jpg', name: '卡拉OK', id: 4 },
+       { icon: 'http://ww1.sinaimg.cn/large/006ThXL5ly1fj8w5i2rnlj302u02umwz.jpg', name: '找工作', id: 5 },
+       { icon: 'http://ww1.sinaimg.cn/large/006ThXL5ly1fj8w5i2zloj302u02udfn.jpg', name: '辅导班', id: 6 },
+       { icon: 'http://ww1.sinaimg.cn/large/006ThXL5ly1fj8w5i69eij302u02ua9w.jpg', name: '汽车保养', id: 7 },
+       { icon: 'http://ww1.sinaimg.cn/large/006ThXL5ly1fj8w5i6j2lj302u02u0sj.jpg', name: '租房', id: 8 },
+       { icon: 'http://ww1.sinaimg.cn/large/006ThXL5ly1fj8w5i6z1pj302u02ua9u.jpg', name: '装修', id: 9 }
      ]
 
     this.setData({ slides, categories })

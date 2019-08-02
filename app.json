@@ -10,19 +10,16 @@
     "pages/detail/testdetail"
   ],
   "window": {
-    "navigationBarBackgroundColor": "#ffffff",
-    "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "本地生活",
-    "backgroundColor": "#f8f9fb",
-    "backgroundTextStyle": "light",
-    "enablePullDownRefresh": false,
-    "onReachBottomDistance": 50
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#4abdcc",
+    "navigationBarTitleText": "法国信息汇",
+    "navigationBarTextStyle": "white"
   },
   "tabBar": {
-    "color": "#999",
-    "selectedColor": "#444",
+    "color": "#b0b0b0",
+    "selectedColor": "#4abdcc",
+    "borderStyle": "white",
     "backgroundColor": "#fff",
-    "borderStyle": "black",
     "list": [
       {
         "pagePath": "pages/index/index",

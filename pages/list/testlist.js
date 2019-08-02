@@ -8,7 +8,7 @@ Page({
     category: null,
     shops: [],
     pageIndex: 0,
-    pageSize: 20,
+    pageSize: 5,
     totalCount: 0,
     hasMore: true
   },
@@ -17,7 +17,6 @@ Page({
     let { pageIndex, pageSize, searchText } = this.data
     const params = { pageIndex: ++pageIndex, pageSize: pageSize }
     if (searchText) params.q = searchText
-
     return fetch(`/list/restaurant`, params)
       .then(res => {
         const totalCount = parseInt(res.header['X-Total-Count'])
@@ -31,14 +30,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    fetch(`/list/restaurant`)
-      .then(res => {
-        console.log(res.data);
-        this.setData({ category: res.data })
-        wx.setNavigationBarTitle({ title: "美食" })
-
-        this.loadMore()
-      })
+//    fetch(`/list/restaurant`, params)
+//      .then(res => {
+//        this.setData({ category: res.data })
+//        wx.setNavigationBarTitle({ title: "美食" })
+//        this.loadMore()
+//      })
+    this.loadMore()
   },
 
   /**
