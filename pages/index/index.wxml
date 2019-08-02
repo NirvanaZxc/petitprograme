@@ -8,7 +8,7 @@
 </swiper>
 
 <view class="grids">
-  <navigator class="item" wx:for="{{categories}}" wx:key="id" url="/pages/list/list?cat=1">
+  <navigator class="item" wx:for="{{categories}}" wx:key="id" url="/pages/list/testlist?cat={{item.id}}">
     <image src="{{item.icon}}"/>
     <text>{{item.name}}</text>
   </navigator>
