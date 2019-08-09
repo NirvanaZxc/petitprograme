@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    category: null,
+    category: [],
+    catType: 0,
     shops: [],
     pageIndex: 0,
     pageSize: 5,
@@ -30,13 +31,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-//    fetch(`/list/restaurant`, params)
-//      .then(res => {
-//        this.setData({ category: res.data })
-//        wx.setNavigationBarTitle({ title: "美食" })
-//        this.loadMore()
-//      })
-    this.loadMore()
+    fetch(`/category`)
+     .then(res => {
+       this.setData({ category: res.data })
+       console.log(res.data);
+      wx.setNavigationBarTitle({ title: "美食" })
+       this.loadMore()
+    })
   },
 
   /**
