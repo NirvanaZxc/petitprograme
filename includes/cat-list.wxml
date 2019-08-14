@@ -1,5 +1,5 @@
 <scroll-view scroll-x="true" class="header">
   <view class="nav">
-    <view class="{{ catType === item.id ? 'selected' : ''}}"  wx:for="{{category}}" wx:key="id" data-type="{{item.id}}" bindtap="changePOIType">{{item.name}}</view>
+    <view class="{{ catType === item.id ? 'selected' : ''}}"  wx:for="{{category}}" wx:key="{{item.id}}" data-type="{{item.id}}" bindtap="changeCatType">{{item.name}}</view>
   </view>
 </scroll-view>

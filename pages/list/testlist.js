@@ -6,6 +6,7 @@ Page({
    */
   data: {
     category: [],
+    catId:'',
     catType: 0,
     shops: [],
     pageIndex: 0,
@@ -15,9 +16,18 @@ Page({
   },
 
   loadMore() {
-    let { pageIndex, pageSize, searchText } = this.data
-    const params = { pageIndex: ++pageIndex, pageSize: pageSize }
-    if (searchText) params.q = searchText
+    let { pageIndex, pageSize, category, hasMore, catId } = this.data
+    this.getCatList(pageIndex, pageSize, this.data.catId);
+  },
+
+  getCatList(pageIndex, pageSize, catId) {
+    const params = { pageIndex: pageIndex * pageSize, pageSize: pageSize, category: catId }
+    this.data.pageIndex = ++pageIndex;
+    this.data.catId = catId;
+    const hasMore = this.data.hasMore;
+    if (!hasMore) {
+      return;
+    }
     return fetch(`/list/restaurant`, params)
       .then(res => {
         const totalCount = parseInt(res.header['X-Total-Count'])
@@ -25,17 +35,22 @@ Page({
         const shops = this.data.shops.concat(res.data)
         this.setData({ shops, totalCount, pageIndex, hasMore })
       })
+    wx.hideToast();
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    fetch(`/category`)
+    wx.showToast({
+      title: '正在加载',
+      icon: 'loading',
+      duration: 10000,
+    });
+    fetch(`/category/${options.cat}`)
      .then(res => {
        this.setData({ category: res.data })
-       console.log(res.data);
-      wx.setNavigationBarTitle({ title: "美食" })
+       wx.setNavigationBarTitle({ title: options.name })
        this.loadMore()
     })
   },
@@ -53,25 +68,17 @@ Page({
    */
   onReachBottom() {
     // TODO：节流
+    if (!this.data.hasMore){
+      return
+    }
     this.loadMore()
   },
 
-  searchHandle() {
-    // console.log(this.data.searchText)
-    this.setData({ shops: [], pageIndex: 0, hasMore: true })
-    this.loadMore()
+  changeCatType(e) {
+    // TODO: stop previous request
+    const self = this;
+    const catType = e.currentTarget.dataset.type;
+    this.setData({ shops: [], pageIndex: 0, hasMore: true, catType: catType })
+    this.getCatList(0, 5, catType);
   },
-
-  showSearchHandle() {
-    this.setData({ searchShowed: true })
-  },
-  hideSearchHandle() {
-    this.setData({ searchText: '', searchShowed: false })
-  },
-  clearSearchHandle() {
-    this.setData({ searchText: '' })
-  },
-  searchChangeHandle(e) {
-    this.setData({ searchText: e.detail.value })
-  }
 })

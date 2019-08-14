@@ -1,14 +1,13 @@
 <include src="/includes/cat-list.wxml"/>
 
-<view class="cells">
-  <navigator class="item" wx:for="{{shops}}" wx:key="id" url="/pages/detail/testdetail?item={{item.id}}">
+<view class="cells" wx:if="{{shops[0].title}}">
+  <navigator class="item" wx:for="{{shops}}" wx:key="{{item.id}}" url="/pages/detail/testdetail?item={{item.id}}">
     <image class="cover" src="{{item.image}}" mode="aspectFill"/>
     <view class="meta">
       <text class="name">{{item.title}}</text>
           <view class="detail">
               <view>
                   <text class="introduction">简介：{{item.teaser || 'none'}}</text>
-                  <text class="category">{{item.category || 'none'}}</text>
               </view>
          </view>
     </view>

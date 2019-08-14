@@ -1,4 +1,4 @@
-<swiper class="slides" autoplay="{{slides.length > 1}}" indicator-dots="{{slides.length > 1}}" indicator-color="#bcc0c9" indicator-active-color="#3a4861">
+<swiper class="slides" autoplay="{{slides.length > 1}}" interval="{{interval}}" duration="{{duration}}" indicator-dots="{{slides.length > 1}}" indicator-color="#bcc0c9" indicator-active-color="#3a4861">
   <swiper-item wx:for="{{slides}}" wx:key="id">
     <navigator wx:if="{{item.link}}" url="{{item.link}}">
       <image src="{{item.image}}" mode="aspectFill"/>
@@ -8,7 +8,7 @@
 </swiper>
 
 <view class="grids">
-  <navigator class="item" wx:for="{{categories}}" wx:key="id" url="/pages/list/testlist?cat={{item.id}}">
+  <navigator class="item" wx:for="{{categories}}" wx:key="id" url="/pages/list/testlist?cat={{item.id}}&name={{item.name}}">
     <image src="{{item.icon}}"/>
     <text>{{item.name}}</text>
   </navigator>
