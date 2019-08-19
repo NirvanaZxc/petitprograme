@@ -8,7 +8,7 @@
 
 <view class="heading" wx:if="{{shop.title[0].value}}">
   <text class="name">{{shop.title[0].value}}</text>
-  <text class="phone">电话：{{shop.phone[0].value  || 'none'}}</text>
+  <text class="phone" bindtap="callPhone" data-phone="{{shop.phone[0].value  || 'none'}}" >电话：{{shop.phone[0].value  || 'none'}}</text>
   <text class="address">地址：{{shop.address[0].value  || 'none'}}</text>
   <text class="hours">营业时间：{{shop.horaire[0].value || 'none'}}</text>
   <text class="price">平价消费价格：{{shop.price[0].value  || 'none'}}</text>

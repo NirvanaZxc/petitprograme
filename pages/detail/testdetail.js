@@ -24,6 +24,20 @@ Page({
       current: e.target.dataset.src,
       urls: this.data.shop.slide
     })
-  }
+  },
+
+  /**
+   * Call phone
+   */
+
+  callPhone(e) {
+    var phone_number = e.target.dataset.phone
+    wx.makePhoneCall({
+      phoneNumber: phone_number
+    })
+    this.setData({
+      block: true
+    })
+  },
 
 })
