@@ -16,7 +16,7 @@
 </view>
 
 <view class="introduction" wx:if="{{shop.description[0].value}}">
-  <text>{{filter.deleteHtmlTags(shop.description[0].value)}}</text>
+  <text>{{filter.deleteEspace(filter.deleteHtmlTags(shop.description[0].value))}}</text>
 </view>
 
 

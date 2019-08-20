@@ -6,7 +6,7 @@ Page({
    */
   data: {
     category: [],
-    catId:'',
+    catId:0,
     catType: 0,
     shops: [],
     pageIndex: 0,
@@ -31,22 +31,25 @@ Page({
     return fetch(`/list/restaurant`, params)
       .then(res => {
         const totalCount = parseInt(res.header['X-Total-Count'])
-        const hasMore = this.data.pageIndex * this.data.pageSize < totalCount
-        const shops = this.data.shops.concat(res.data)
-        this.setData({ shops, totalCount, pageIndex, hasMore })
+        if (totalCount > 0) {
+          const hasMore = this.data.pageIndex * this.data.pageSize < totalCount
+          const shops = this.data.shops.concat(res.data)
+          this.setData({ shops, totalCount, pageIndex, hasMore })
+        }
+        else{
+          wx.showToast({
+            title: res.data.message || '网络异常',
+            icon: 'none',
+            duration: 2000
+          })
+        }
       })
-    wx.hideToast();
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    wx.showToast({
-      title: '正在加载',
-      icon: 'loading',
-      duration: 10000,
-    });
     fetch(`/category/${options.cat}`)
      .then(res => {
        this.setData({ category: res.data })
@@ -59,8 +62,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
-    this.setData({ shops: [], pageIndex: 0, hasMore: true })
-    this.loadMore().then(() => wx.stopPullDownRefresh())
+    let { pageIndex, pageSize, category, hasMore, catId } = this.data
+    this.getCatList(this.data.pageIndex, this.data.pageSize, this.data.catId).then(() => wx.stopPullDownRefresh())
   },
 
   /**

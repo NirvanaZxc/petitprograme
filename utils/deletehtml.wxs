@@ -3,8 +3,14 @@ var filter = {
     var reg = getRegExp("<[^>]+>", "g");
     var result = str.replace(reg, '');
     return result;
+  },
+  deleteEspace: function(str) {
+    var reg = getRegExp("\s|　", "g");
+    var result = str.replace(reg, '');
+    return result;
   }
 }
 module.exports = {
-  deleteHtmlTags: filter.deleteHtmlTags
+  deleteHtmlTags: filter.deleteHtmlTags,
+  deleteEspace: filter.deleteEspace
 }
