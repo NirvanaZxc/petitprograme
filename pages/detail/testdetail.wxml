@@ -1,10 +1,14 @@
 <wxs module="filter" src="../../utils/deletehtml.wxs"></wxs>
 
-<swiper class="slides" indicator-dots="{{shop.slide.length > 1}}" indicator-color="#bcc0c9" indicator-active-color="#3a4861">
-  <swiper-item wx:for="{{shop.slide}}" wx:key="id">
+<swiper class="slides" indicator-dots="{{shop.slide.length > 1}}" indicator-color="#bcc0c9" indicator-active-color="#3a4861" wx:if="{{bundle == '美食'}}">
+  <swiper-item wx:for="{{shop.image}}" wx:key="id">
     <image src="{{item.url}}" mode="aspectFill" bindtap="previewHandle" data-src="{{item.url}}"/>
   </swiper-item>
 </swiper>
+
+<view class="slides" wx:if="{{bundle == '美食'}}">
+  <image src="{{item.url}}" mode="aspectFill" data-src="{{item.url}}"/>
+</view>
 
 <view class="heading" wx:if="{{shop.title[0].value}}">
   <text class="name">{{shop.title[0].value}}</text>

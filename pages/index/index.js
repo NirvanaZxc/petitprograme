@@ -8,7 +8,7 @@ Page({
     slides: [],
     categories: [],
     interval: 5000,
-    duration: 1000
+    duration: 1000,
   },
 
   /**
@@ -24,7 +24,6 @@ Page({
     fetch("/theme").then(res => {
       this.setData({ "categories": res.data });
     });
-
   },
 
 })

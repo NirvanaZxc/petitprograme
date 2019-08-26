@@ -12,15 +12,16 @@ Page({
     pageIndex: 0,
     pageSize: 5,
     totalCount: 0,
-    hasMore: true
+    hasMore: true,
+    bundle:null,
   },
 
-  loadMore() {
+  loadMore(bundle) {
     let { pageIndex, pageSize, category, hasMore, catId } = this.data
-    this.getCatList(pageIndex, pageSize, this.data.catId);
+    this.getCatList(pageIndex, pageSize, this.data.catId, bundle);
   },
 
-  getCatList(pageIndex, pageSize, catId) {
+  getCatList(pageIndex, pageSize, catId, bundle) {
     const params = { pageIndex: pageIndex * pageSize, pageSize: pageSize, category: catId }
     this.data.pageIndex = ++pageIndex;
     this.data.catId = catId;
@@ -28,13 +29,23 @@ Page({
     if (!hasMore) {
       return;
     }
-    return fetch(`/list/restaurant`, params)
+    switch (bundle) {
+      case '美食':
+        var url = '/list/restaurant';
+        break;
+      case '电子书':
+        var url = '/list/book';
+        break;  
+    }
+    
+    return fetch(url, params)
       .then(res => {
         const totalCount = parseInt(res.header['X-Total-Count'])
         if (totalCount > 0) {
           const hasMore = this.data.pageIndex * this.data.pageSize < totalCount
           const shops = this.data.shops.concat(res.data)
-          this.setData({ shops, totalCount, pageIndex, hasMore })
+          const bundle = this.data.bundle
+          this.setData({ shops, totalCount, pageIndex, hasMore, bundle})
         }
         else{
           wx.showToast({
@@ -50,11 +61,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.setData({ bundle: options.name })
     fetch(`/category/${options.cat}`)
      .then(res => {
        this.setData({ category: res.data })
        wx.setNavigationBarTitle({ title: options.name })
-       this.loadMore()
+       this.loadMore(this.data.bundle)
     })
   },
 
@@ -62,8 +74,9 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh() {
-    let { pageIndex, pageSize, category, hasMore, catId } = this.data
-    this.getCatList(this.data.pageIndex, this.data.pageSize, this.data.catId).then(() => wx.stopPullDownRefresh())
+    let { pageIndex, pageSize, category, hasMore, catId, bundle } = this.data
+    this.getCatList(this.data.pageIndex, this.data.pageSize, this.data.catId, this.data.bundle)
+    wx.stopPullDownRefresh()
   },
 
   /**
@@ -74,14 +87,15 @@ Page({
     if (!this.data.hasMore){
       return
     }
-    this.loadMore()
+    this.loadMore(this.data.bundle)
   },
 
   changeCatType(e) {
     // TODO: stop previous request
     const self = this;
     const catType = e.currentTarget.dataset.type;
+    const nodeType = e.currentTarget.dataset.name;
     this.setData({ shops: [], pageIndex: 0, hasMore: true, catType: catType })
-    this.getCatList(0, 5, catType);
+    this.getCatList(0, 5, catType, this.data.bundle);
   },
 })

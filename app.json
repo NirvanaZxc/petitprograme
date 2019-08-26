@@ -7,7 +7,8 @@
     "pages/messages/messages",
     "pages/profile/profile",
     "pages/settings/settings",
-    "pages/detail/testdetail"
+    "pages/detail/testdetail",
+    "pages/login/login"
   ],
   "window": {
     "backgroundTextStyle": "dark",
