@@ -57,7 +57,6 @@ Page({
     });
   },
   checkUserName: function (param) {
-    //var email = util.regexConfig().email;
     var inputUserName = param.username.trim();
     if (inputUserName.length >= 4) {
       return true;
@@ -92,8 +91,6 @@ Page({
     return fetch(`user/login?_format=json`, params)
       .then(res => {
         if (res.statusCode) {
-         
-
           var userInfo = {
             csrf_token: res.data.csrf_token,
             logout_token: res.data.logout_token,
@@ -119,5 +116,18 @@ Page({
         }
       })
   },
+
+  forgotPassword(e) {
+    const catType = e.currentTarget.dataset.src;
+    wx.navigateTo({
+      url: catType,
+    })
+  },
+  registerCompte(e) {
+    const catType = e.currentTarget.dataset.src;
+    wx.navigateTo({
+      url: catType,
+    })
+  }
 
 })

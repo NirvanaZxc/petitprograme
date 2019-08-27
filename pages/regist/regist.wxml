@@ -1,0 +1,13 @@
+<view class="content">
+    <form bindsubmit="formRegister">
+        <view class="input-area">
+          <input id="username" name="username" maxlength='40' type="text" placeholder="用户名" />
+          <input id="email" name="email" maxlength='40' type="text" placeholder="邮箱" />
+          <input id="password" name="password" maxlength='20' type="password" placeholder="密码" />
+          <input id="confirmpassword" name="confirm_password" maxlength='20' type="password" placeholder="再次输入密码" />
+        </view>
+        <view class="btn-area">
+            <button  disabled="{{disabled}}" style="background-color:{{loginBtnBgBgColor}}"   formType="submit" > {{loginBtnTxt}} </button>
+        </view>
+    </form>    
+</view>

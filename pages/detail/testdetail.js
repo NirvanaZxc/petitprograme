@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    shop: {}
+    shop: {},
+    bunlde:null
   },
 
   /**
@@ -15,6 +16,7 @@ Page({
     fetch(`/node/${options.item}`)
       .then(res => {
         this.setData({ shop: res.data })
+        this.setData({ bundle: options.bundle })
         wx.setNavigationBarTitle({ title: res.data.title[0].value})
       })
   },
@@ -38,6 +40,14 @@ Page({
     this.setData({
       block: true
     })
+  },
+
+  callDownload(e) {
+    var url = 'http://intermagasin.com/' + e.target.dataset.url
+    wx.reLaunch({
+      url: url,
+    })
+
   },
 
 })

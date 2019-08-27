@@ -1,7 +1,7 @@
 <include src="/includes/cat-list.wxml"/>
 
 <view class="cells" wx:if="{{shops[0].title}}">
-  <navigator class="item" wx:for="{{shops}}" wx:key="{{item.id}}" url="/pages/detail/testdetail?item={{item.id}}">
+  <navigator class="item" wx:for="{{shops}}" wx:key="{{item.id}}" url="/pages/detail/testdetail?item={{item.id}}&bundle={{bundle}}">
     <image class="cover" src="{{item.image}}" mode="aspectFill"/>
     <view class="meta">
       <text class="name" decode='true'>{{item.title}}</text>

@@ -8,7 +8,8 @@
     "pages/profile/profile",
     "pages/settings/settings",
     "pages/detail/testdetail",
-    "pages/login/login"
+    "pages/login/login",
+    "pages/regist/regist"
   ],
   "window": {
     "backgroundTextStyle": "dark",
