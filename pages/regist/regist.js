@@ -35,18 +35,43 @@ Page({
         duration: 1000
       })
     }else {
-      let data = {
+      let params = {
         name: username,
-        password: md5.hexMD5(password)
+        pass: password,
+        mail:email
       }
-      dev_request.Post('/user/register', data, function (res) {
-        
-        setTimeout(function () {
-          wx.switchTab({
-            url: '../index/index'
-          })
-        }, 3000);
-      })
+      return fetch(`user/register?_format=json`, params)
+        .then(res => {
+          if (res.statusCode) {
+            var userInfo = {
+              csrf_token: res.data.csrf_token,
+              logout_token: res.data.logout_token,
+              id: res.data.current_user.id,
+              loginname: res.data.current_user.name,
+            };
+            wx.setStorageSync('userInfo', userInfo);
+
+            setTimeout(function () {
+              wx.showToast({
+                title: '注册成功!',
+                icon: 'none',
+                duration: 1000
+              })
+              wx.switchTab({
+                url: '../index/index'
+              })
+            }, 3000);
+          }
+          else {
+            wx.showModal({
+              title: '提示',
+              showCancel: false,
+              content: '用户名或密码有误，请重新输入'
+            });
+            this.setLoginData2();
+          }
+        })
+
     }
   }
 
