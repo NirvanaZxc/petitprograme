@@ -1,5 +1,5 @@
 const util = require("../../utils/util.js");
-const fetch = require('../../utils/loginApi')
+const fetch = require('../../utils/logout')
 
 Page({
   /**
@@ -26,33 +26,45 @@ onLoad: function() {
     })
   },
   userLogout(e) {
-    return fetch(`session/token?_format=json`)
-      .then(res => {
-        if (res.statusCode) {
-          var logoutUrl = 'user/logout?_format=json&token=' + res
-          fetch(logoutUrl, '', 'GET' )
-            .then(res => {
-              if (res.statusCode) {
-                wx.removeStorage({
-                  key: 'userInfo',
-                  success: function(res) {
-                    wx.switchTab({
-                      url: '../index/index'
-                    })
+    var logout_token = wx.getStorageSync('userInfo').logout_token
+    var csrf_token = wx.getStorageSync('userInfo').csrf_token
+    var cookies = wx.getStorageSync('userInfo').cookies
+    var logoutUrl = `user/logout?_format=json`
+    let header = {
+      'content-type': 'application/x-www-form-urlencoded',
+      'Cookie': cookies
+    }
+    return fetch(logoutUrl, 'GET', header)
+        .then(res => {
+          if (res.statusCode == 200) {
+            wx.removeStorage({
+              key: 'userInfo',
+              success: function(res) {
+                wx.showToast({
+                  title: '注册成功!',
+                  icon: 'success',
+                  duration: 1000,
+                  success: function () {
+                    setTimeout(function () {
+                      //要延时执行的代码
+                      wx.switchTab({
+                        url: '../index/index',
+                      })
+                    }, 2000) //延迟时间
                   },
-                })
-
-              }
+                });
+              },
             })
-        }
-        else {
+
+          }
+          else {
           wx.showModal({
             title: '提示',
             showCancel: false,
             content: '网络错误'
           });
         }
-      })
-  }
-
+        })
+    }
 })
+

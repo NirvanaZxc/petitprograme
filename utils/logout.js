@@ -1,15 +1,10 @@
 const app = getApp()
 
-let header = {
-  'content-type': 'application/json',
-}
-
-module.exports = (url, data, method, header = header) => {
+module.exports = (url, method, header ) => {
   wx.showLoading({ title: 'Loading...' })
   return new Promise((resolve, reject) => {
     wx.request({
       url: app.config.apiLogin + url,
-      data,
       header,
       method,
       success: resolve,

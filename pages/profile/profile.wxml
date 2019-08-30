@@ -4,14 +4,14 @@
 </view>
 
 <view class="cells">
-  <navigator class="item">个人资料</navigator>
+  <!--navigator class="item">个人资料</navigator>
   <navigator class="item">我的优惠券</navigator>
   <view class="divider"></view>
   <navigator class="item">常见问题</navigator>
   <navigator class="item">使用条款</navigator>
   <navigator class="item">隐私权政策</navigator>
-  <navigator class="item">联系客服</navigator>
+  <navigator class="item">联系客服</navigator-->
   <view class="divider"></view>
-  <navigator class="item" bindtap="userLogout">退出</navigator>
-  <navigator url="/pages/settings/settings" class="item">设置</navigator>
+  <text class="item" bindtap="userLogout">退出</text>
+  <!--navigator url="/pages/settings/settings" class="item">设置</navigator-->
 </view>

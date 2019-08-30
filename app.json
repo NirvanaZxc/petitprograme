@@ -30,12 +30,6 @@
         "selectedIconPath": "assets/home-active.png"
       },
       {
-        "pagePath": "pages/messages/messages",
-        "text": "消息",
-        "iconPath": "assets/message.png",
-        "selectedIconPath": "assets/message-active.png"
-      },
-      {
         "pagePath": "pages/profile/profile",
         "text": "我的",
         "iconPath": "assets/profile.png",

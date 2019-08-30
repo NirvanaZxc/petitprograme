@@ -35,32 +35,28 @@ Page({
         duration: 1000
       })
     }else {
-      let params = {
-        name: username,
-        pass: password,
-        mail:email
-      }
+      const params = { name: [username], pass: [password], mail:[email] }
       return fetch(`user/register?_format=json`, params)
         .then(res => {
-          if (res.statusCode) {
+          if (res.statusCode == 200) {
             var userInfo = {
-              csrf_token: res.data.csrf_token,
-              logout_token: res.data.logout_token,
-              id: res.data.current_user.id,
-              loginname: res.data.current_user.name,
+              email: res.data.mail,
+              id: res.data.uid,
+              loginname: res.data.name,
             };
             wx.setStorageSync('userInfo', userInfo);
-
-            setTimeout(function () {
-              wx.showToast({
-                title: '注册成功!',
-                icon: 'none',
-                duration: 1000
-              })
-              wx.switchTab({
-                url: '../index/index'
-              })
-            }, 3000);
+            wx.showToast({
+              title: '注册成功!',
+              icon: 'success',
+              duration: 3000,
+              success: function () {
+                setTimeout(function () {
+                  //要延时执行的代码
+                  wx.navigateBack();
+                }, 4000) //延迟时间
+              },
+            });
+          
           }
           else {
             wx.showModal({

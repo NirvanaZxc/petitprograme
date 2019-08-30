@@ -88,17 +88,18 @@ Page({
     var password = param.password.trim();
     var that = this;
     const params = { name: username, pass: password}
-    return fetch(`user/login?_format=json`, params)
+    return fetch(`user/login?_format=json`,  params, 'POST')
       .then(res => {
-        if (res.statusCode) {
+        if (res.statusCode == 200) {
           var userInfo = {
             csrf_token: res.data.csrf_token,
             logout_token: res.data.logout_token,
-            id: res.data.current_user.id,
+            id: res.data.current_user.uid,
             loginname: res.data.current_user.name,
+            cookies: res.cookies[0]
           };
           wx.setStorageSync('userInfo', userInfo);
-          
+
           setTimeout(function () {
             that.setData({ loading: false });
             wx.switchTab({
