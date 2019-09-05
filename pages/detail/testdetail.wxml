@@ -6,11 +6,11 @@
   </swiper-item>
 </swiper>
 
-<view class="slides" wx:if="{{bundle == '电子书'}}" wx:for="{{shop.image}}" wx:key="id">
+<view class="slides" wx:if="{{bundle == 'book'}}" wx:for="{{shop.image}}" wx:key="id">
   <image src="{{item.url}}" mode="aspectFit" data-src="{{item.url}}"/>
 </view>
 
-<view class="heading" wx:if="{{shop.title[0].value && bundle == '美食' }}">
+<view class="heading" wx:if="{{shop.title[0].value && bundle == 'restaurant' }}">
   <text class="name">{{shop.title[0].value}}</text>
   <text class="phone" bindtap="callPhone" data-phone="{{shop.phone[0].value  || 'none'}}" >电话：{{shop.phone[0].value  || 'none'}}</text>
   <text class="address">地址：{{shop.address[0].value  || 'none'}}</text>
@@ -19,7 +19,7 @@
   <text class="transport">交通：{{shop.transport[0].value  || 'none'}}</text>
 </view>
 
-<view class="heading" wx:if="{{shop.title[0].value && bundle == '电子书' }}">
+<view class="heading" wx:if="{{shop.title[0].value && bundle == 'book' }}">
   <text class="name">{{shop.title[0].value}}</text>
   <text class="author"  data-author="{{shop.author[0].value  || 'none'}}" >作者：{{shop.author[0].value  || 'none'}}</text>
   <text class="format">格式：{{shop.format[0].value  || 'none'}}</text>

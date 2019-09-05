@@ -30,12 +30,15 @@ Page({
       return;
     }
     switch (bundle) {
-      case '美食':
+      case 'restaurant':
         var url = '/list/restaurant';
         break;
-      case '电子书':
+      case 'book':
         var url = '/list/book';
         break;  
+      case 'appart':
+        var url = '/list/appart';
+        break;    
     }
     
     return fetch(url, params)
@@ -61,7 +64,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.setData({ bundle: options.name })
+    this.setData({ bundle: options.bundle })
     fetch(`/category/${options.cat}`)
      .then(res => {
        this.setData({ category: res.data })

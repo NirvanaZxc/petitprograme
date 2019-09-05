@@ -1,6 +1,6 @@
 <swiper class="slides" autoplay="{{slides.length > 1}}" interval="{{interval}}" duration="{{duration}}" indicator-dots="{{slides.length > 1}}" indicator-color="#bcc0c9" indicator-active-color="#3a4861">
   <swiper-item wx:for="{{slides}}" wx:key="id">
-    <navigator wx:if="{{item.link}}" url="{{item.link}}">
+    <navigator  wx:if="{{item.link}}" url="/pages/detail/testdetail?item={{item.link}}&bundle={{item.type}}">
       <image src="{{item.image}}" mode="aspectFill"/>
     </navigator>
     <image wx:else src="{{item.image}}" mode="aspectFill"/>
@@ -8,7 +8,7 @@
 </swiper>
 
 <view class="grids">
-  <navigator class="item" wx:for="{{categories}}" wx:key="id" url="/pages/list/testlist?cat={{item.id}}&name={{item.name}}&bundle=">
+  <navigator class="item" wx:for="{{categories}}" wx:key="id" url="/pages/list/testlist?cat={{item.id}}&name={{item.name}}&bundle={{item.id}}">
     <image src="{{item.icon}}"/>
     <text>{{item.name}}</text>
   </navigator>
