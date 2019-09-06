@@ -6,7 +6,8 @@ Page({
    */
   data: {
     shop: {},
-    bunlde:null
+    bunlde:null,
+    userid:null
   },
 
   /**
@@ -18,7 +19,12 @@ Page({
         this.setData({ shop: res.data })
         this.setData({ bundle: options.bundle })
         wx.setNavigationBarTitle({ title: res.data.title[0].value})
+        console.log(res.data);
       })
+
+    if(wx.getStorageSync('userInfo').id){
+      this.setData({ userid: wx.getStorageSync('userInfo').id })
+    }
   },
 
   previewHandle(e) {

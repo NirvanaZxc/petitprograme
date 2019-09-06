@@ -18,7 +18,6 @@ Page({
     // 轮播图数据渲染
     fetch("/getslides").then(res => {
       this.setData({ "slides": res.data });
-      console.log(res.data);
    });
 
     // grid 列表渲染

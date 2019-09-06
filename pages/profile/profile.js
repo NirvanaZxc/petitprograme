@@ -30,10 +30,12 @@ onLoad: function() {
     var csrf_token = wx.getStorageSync('userInfo').csrf_token
     var cookies = wx.getStorageSync('userInfo').cookies
     var logoutUrl = `user/logout?_format=json`
+    
     let header = {
       'content-type': 'application/x-www-form-urlencoded',
       'Cookie': cookies
     }
+
     return fetch(logoutUrl, 'GET', header)
         .then(res => {
           if (res.statusCode == 200) {
@@ -41,7 +43,7 @@ onLoad: function() {
               key: 'userInfo',
               success: function(res) {
                 wx.showToast({
-                  title: '注册成功!',
+                  title: '退出成功!',
                   icon: 'success',
                   duration: 1000,
                   success: function () {

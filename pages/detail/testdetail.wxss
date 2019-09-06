@@ -81,3 +81,8 @@
   height: 110rpx;
   margin: 10rpx;
 }
+
+.address strong{
+  font-weight: bold;
+  color: #000
+}
