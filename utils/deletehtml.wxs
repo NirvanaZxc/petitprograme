@@ -13,4 +13,4 @@ var filter = {
 module.exports = {
   deleteHtmlTags: filter.deleteHtmlTags,
   deleteEspace: filter.deleteEspace
-}
+  }

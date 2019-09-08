@@ -6,51 +6,49 @@
   </swiper-item>
 </swiper>
 
-<swiper class="slides" indicator-dots="{{shop.slide.length > 1}}" indicator-color="#bcc0c9" indicator-active-color="#3a4861" wx:if="{{(bundle == 'restaurant' || bundle == 'appart') && shop.slide.length < 1}}">
-  <swiper-item wx:for="{{shop.image}}" wx:key="id">
-    <image src="{{item.default}}" mode="aspectFill" bindtap="previewHandle" data-src="{{item.default}}"/>
-  </swiper-item>
-</swiper>
+<view class="slides" wx:if="{{(bundle == 'restaurant' || bundle == 'appart') && !noslide}}" wx:for="{{shop.image}}" wx:key="id">
+  <image src="{{item.default}}" mode="aspectFit" data-src="{{item.default}}"/>
+</view>
 
 <view class="slides" wx:if="{{bundle == 'book'}}" wx:for="{{shop.image}}" wx:key="id">
   <image src="{{item.default}}" mode="aspectFit" data-src="{{item.default}}"/>
 </view>
 
 <view class="heading" wx:if="{{shop.title[0].value && bundle == 'restaurant' }}">
-  <text class="name">{{shop.title[0].value}} </text>
-  <text class="phone" bindtap="callPhone" data-phone="{{shop.phone[0].value  || 'none'}}" >电话：{{shop.phone[0].value  || 'none'}}</text>
-  <text class="address">地址：{{shop.address[0].value  || 'none'}}</text>
-  <text class="hours">营业时间：{{shop.horaire[0].value || 'none'}}</text>
-  <text class="price">平价消费价格：{{shop.price[0].value  || 'none'}}</text>
-  <text class="transport">交通：{{shop.transport[0].value  || 'none'}}</text>
+  <rich-text class="name">{{shop.title[0].value}} </rich-text>
+  <rich-text class="phone" bindtap="callPhone" data-phone="{{shop.phone[0].value  || 'none'}}" ><strong>电话：</strong>{{shop.phone[0].value  || 'none'}}</rich-text>
+  <rich-text class="address"><strong>地址：</strong>{{shop.address[0].value  || 'none'}}</rich-text>
+  <rich-text class="hours"><strong>营业时间：</strong>{{shop.horaire[0].value || 'none'}}</rich-text>
+  <rich-text class="price"><strong>平价消费价格：</strong>{{shop.price[0].value  || 'none'}}</rich-text>
+  <rich-text class="transport"><strong>交通：</strong>{{shop.transport[0].value  || 'none'}}</rich-text>
 </view>
 
 <view class="heading" wx:if="{{shop.title[0].value && bundle == 'book' }}">
-  <text class="name">{{shop.title[0].value}}</text>
-  <text class="author"  data-author="{{shop.author[0].value  || 'none'}}" >作者：{{shop.author[0].value  || 'none'}}</text>
-  <text class="format">格式：{{shop.format[0].value  || 'none'}}</text>
-  <text class="rate">评价：{{shop.rate[0].value || 'none'}}</text>
-  <text class="url"  data-url="{{shop.url[0].value  || 'none'}}" bindtap="callDownload">点击下载</text>
+  <rich-text class="name">{{shop.title[0].value}}</rich-text>
+  <rich-text class="author"  data-author="{{shop.author[0].value  || 'none'}}" ><strong>作者：</strong>{{shop.author[0].value  || 'none'}}</rich-text>
+  <rich-text class="format"><strong>格式：</strong>{{shop.format[0].value  || 'none'}}</rich-text>
+  <rich-text class="rate"><strong>评价：</strong>{{shop.rate[0].value || 'none'}}</rich-text>
+  <!--rich-text class="url"  data-url="{{shop.url[0].value  || 'none'}}" bindtap="callDownload">点击下载</rich-text-->
 </view>
 
 <view class="heading" wx:if="{{shop.title[0].value && bundle == 'appart' }}">
-  <text class="name">{{shop.title[0].value}}</text>
-  <text wx:if="{{shop.phone[0].value && userid}}" class="phone" bindtap="callPhone" data-phone="{{shop.phone[0].value  || 'none'}}" >电话：{{shop.phone[0].value  || 'none'}}</text>
-    <text wx:if="{{shop.phone[0].value && !userid}}" class="phone" >电话：请登录之后查看</text>
+  <rich-text class="name">{{shop.title[0].value}}</rich-text>
+  <rich-text wx:if="{{shop.phone[0].value && userid}}" class="phone" bindtap="callPhone" data-phone="{{shop.phone[0].value  || 'none'}}" ><strong>电话：</strong>{{shop.phone[0].value  || 'none'}}</rich-text>
+    <rich-text wx:if="{{shop.phone[0].value && !userid}}" class="phone" ><strong>电话：请登录之后查看</strong></rich-text>
   <rich-text class="address"><strong>地址：</strong>{{shop.address[0].value  || 'none'}}</rich-text>
-  <text wx:if="{{shop.wechat[0].value && userid}}" class="wechat">微信：{{shop.wechat[0].value  || 'none'}}</text>
-   <text wx:if="{{shop.wechat[0].value && !userid}}" class="wechat">微信：请登录之后查看</text>
-   <text class="tophee">中介费：{{shop.topfee[0].value  || 'none'}}</text>
-  <text class="price">房租：{{shop.price[0].value  || 'none'}}</text>
-  <text class="transport">交通：{{shop.transport[0].value  || 'none'}}</text>
+  <rich-text wx:if="{{shop.wechat[0].value && userid}}" class="wechat"><strong>微信：</strong>{{shop.wechat[0].value  || 'none'}}</rich-text>
+   <rich-text wx:if="{{shop.wechat[0].value && !userid}}" class="wechat"><strong>微信：请登录之后查看</strong></rich-text>
+   <rich-text class="tophee"><strong>中介费：</strong>{{shop.topfee[0].value  || 'none'}}</rich-text>
+  <rich-text class="price"><strong>房租：</strong>{{shop.price[0].value  || 'none'}}</rich-text>
+  <rich-text class="transport"><strong>交通：</strong>{{shop.transport[0].value  || 'none'}}</rich-text>
 </view>
 
 <view class="introduction" wx:if="{{shop.authorintroduction[0].value}}">
-  <text>{{filter.deleteEspace(filter.deleteHtmlTags(shop.authorintroduction[0].value))}}</text>
+  <rich-text>{{filter.deleteEspace(filter.deleteHtmlTags(shop.authorintroduction[0].value))}}</rich-text>
 </view>
 
 <view class="introduction" wx:if="{{shop.description[0].value}}">
-  <text>{{filter.deleteEspace(filter.deleteHtmlTags(shop.description[0].value))}}</text>
+  <rich-text>{{filter.deleteEspace(filter.deleteHtmlTags(shop.description[0].value))}}</rich-text>
 </view>
 
 

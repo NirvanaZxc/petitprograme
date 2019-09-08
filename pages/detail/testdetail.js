@@ -7,7 +7,8 @@ Page({
   data: {
     shop: {},
     bunlde:null,
-    userid:null
+    userid:null,
+    noslide:null
   },
 
   /**
@@ -17,11 +18,15 @@ Page({
     fetch(`/node/${options.item}`)
       .then(res => {
         this.setData({ shop: res.data })
+        if (typeof (res.data.slide) == 'undefined'){
+          this.setData({ noslide: false })
+        }else{
+          this.setData({ noslide: true })
+        }
         this.setData({ bundle: options.bundle })
         wx.setNavigationBarTitle({ title: res.data.title[0].value})
-        console.log(res.data);
       })
-
+      
     if(wx.getStorageSync('userInfo').id){
       this.setData({ userid: wx.getStorageSync('userInfo').id })
     }
