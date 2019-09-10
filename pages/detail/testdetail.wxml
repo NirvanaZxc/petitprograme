@@ -44,11 +44,11 @@
 </view>
 
 <view class="introduction" wx:if="{{shop.authorintroduction[0].value}}">
-  <rich-text>{{filter.deleteEspace(filter.deleteHtmlTags(shop.authorintroduction[0].value))}}</rich-text>
+  <rich-text>{{filter.deleteEspace(hop.authorintroduction[0].value)}}</rich-text>
 </view>
 
 <view class="introduction" wx:if="{{shop.description[0].value}}">
-  <rich-text>{{filter.deleteEspace(filter.deleteHtmlTags(shop.description[0].value))}}</rich-text>
+  <rich-text>{{shop.description[0].value}}</rich-text>
 </view>
 
 

@@ -4,6 +4,7 @@ let header = {
   'content-type': 'application/json',
 }
 
+
 module.exports = (url, data, method, header = header) => {
   wx.showLoading({ title: 'Loading...' })
   return new Promise((resolve, reject) => {

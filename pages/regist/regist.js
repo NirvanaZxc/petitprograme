@@ -36,7 +36,7 @@ Page({
       })
     }else {
       const params = { name: [username], pass: [password], mail:[email] }
-      return fetch(`user/register?_format=json`, params)
+      return fetch(`/user/register?_format=json`, params, 'POST')
         .then(res => {
           if (res.statusCode == 200) {
             var userInfo = {
@@ -64,7 +64,6 @@ Page({
               showCancel: false,
               content: '用户名或密码有误，请重新输入'
             });
-            this.setLoginData2();
           }
         })
 

@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: {}
+    cookies: null
   },
   onShow: function () {
     //初始化加载，先判断用户登录状态
@@ -17,25 +17,31 @@ Page({
     }
   },
 onLoad: function() {
-
+  return fetch('/session/token?_format=json', 'GET')
+    .then(res => {
+      if (res.statusCode == 200) {
+        console.log(res.data);
+        this.setData({
+          cookies: res.data
+        });
+      }
+      else {
+        wx.showModal({
+          title: '提示',
+          showCancel: false,
+          content: '网络错误'
+        });
+      }
+    })
 },
 
-  getUserInfo (e) {
-    this.setData({
-      userInfo: e.detail.userInfo
-    })
-  },
   userLogout(e) {
-    var logout_token = wx.getStorageSync('userInfo').logout_token
-    var csrf_token = wx.getStorageSync('userInfo').csrf_token
-    var cookies = wx.getStorageSync('userInfo').cookies
-    var logoutUrl = `user/logout?_format=json`
-    
+    var logoutUrl = `/user/logout?_format=json`
     let header = {
       'content-type': 'application/x-www-form-urlencoded',
-      'Cookie': cookies
+      'Cookie': this.data.cookies,
     }
-
+    console.log(header);
     return fetch(logoutUrl, 'GET', header)
         .then(res => {
           if (res.statusCode == 200) {

@@ -2,7 +2,7 @@ const app = getApp()
 
 let header = {
   'content-type': 'application/json',
-  'Authorization': 'Basic YWRtaW46YWRtaW4='
+  'Authorization': 'Basic Zmd4eDpmZ3h4Pw=='
 }
 
 module.exports = (url, data, method = 'GET', header = header) => {
